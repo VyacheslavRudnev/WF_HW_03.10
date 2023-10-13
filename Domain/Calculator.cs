@@ -85,110 +85,63 @@ namespace WinFormsApp3.Domain
             }
             return basePropertyRate;
         }
+        
         public decimal TravelIns(int days, int travelers, int cover, int button)
         {
-           
-            if ( button == 1)
+            decimal TravelRate = 0;
+
+            if (button == 1)
             {
-                decimal TravelRate = baseInsTravelRate * 1.0m * days * travelers;
-                if (cover == 10000)
-                {
-                    return TravelRate * 1.1m;
-                }
-                else if (cover == 20000)
-                {
-                    return TravelRate * 1.2m;
-                }
-                else if (cover == 30000)
-                {
-                    return TravelRate * 1.3m;
-                }
-                else if (cover == 40000)
-                {
-                    return TravelRate * 1.4m;
-                }
-                else if (cover == 50000)
-                {
-                    return TravelRate * 1.5m;
-                }
-                else if (cover == 60000)
-                {
-                    return TravelRate * 1.6m;
-                }
-                else if (cover == 70000)
-                {
-                    return TravelRate * 1.7m;
-                }
-                return TravelRate * 1.8m;
+                TravelRate = baseInsTravelRate * 1.0m * days * travelers;
             }
-            else if (button ==2)
+            else if (button == 2)
             {
-                decimal TravelRate = baseInsTravelRate * 1.15m * days * travelers;
-                if (cover == 10000)
-                {
-                    return TravelRate * 1.1m;
-                }
-                else if (cover == 20000)
-                {
-                    return TravelRate * 1.2m;
-                }
-                else if (cover == 30000)
-                {
-                    return TravelRate * 1.3m;
-                }
-                else if (cover == 40000)
-                {
-                    return TravelRate * 1.4m;
-                }
-                else if (cover == 50000)
-                {
-                    return TravelRate * 1.5m;
-                }
-                else if (cover == 60000)
-                {
-                    return TravelRate * 1.6m;
-                }
-                else if (cover == 70000)
-                {
-                    return TravelRate * 1.7m;
-                }
-                return TravelRate * 1.8m;
+                TravelRate = baseInsTravelRate * 1.15m * days * travelers;
             }
-            else if (button ==3)
+            else if (button == 3)
             {
-                decimal TravelRate = baseInsTravelRate * 1.22m * days * travelers;
-                if (cover == 10000)
-                {
-                    return TravelRate * 1.1m;
-                }
-                else if (cover == 20000)
-                {
-                    return TravelRate * 1.2m;
-                }
-                else if (cover == 30000)
-                {
-                    return TravelRate * 1.3m;
-                }
-                else if (cover == 40000)
-                {
-                    return TravelRate * 1.4m;
-                }
-                else if (cover == 50000)
-                {
-                    return TravelRate * 1.5m;
-                }
-                else if (cover == 60000)
-                {
-                    return TravelRate * 1.6m;
-                }
-                else if (cover == 70000)
-                {
-                    return TravelRate * 1.7m;
-                }
-                return TravelRate * 1.8m;
+                TravelRate = baseInsTravelRate * 1.22m * days * travelers;
             }
-            return 0;
-            
+
+            decimal finalRate = 0;
+
+            if (cover == 10000)
+            {
+                finalRate = TravelRate * 1.1m;
+            }
+            else if (cover == 20000)
+            {
+                finalRate = TravelRate * 1.2m;
+            }
+            else if (cover == 30000)
+            {
+                finalRate = TravelRate * 1.3m;
+            }
+            else if (cover == 40000)
+            {
+                finalRate = TravelRate * 1.4m;
+            }
+            else if (cover == 50000)
+            {
+                finalRate = TravelRate * 1.5m;
+            }
+            else if (cover == 60000)
+            {
+                finalRate = TravelRate * 1.6m;
+            }
+            else if (cover == 70000)
+            {
+                finalRate = TravelRate * 1.7m;
+            }
+            else
+            {
+                finalRate = TravelRate * 1.8m;
+            }
+
+            // Обмеження кількості знаків після коми до 2
+            finalRate = Math.Round(finalRate, 2);
+
+            return finalRate;
         }
 
     }

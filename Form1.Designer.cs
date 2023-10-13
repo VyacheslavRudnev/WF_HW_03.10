@@ -290,7 +290,6 @@
             tb_LastName.Name = "tb_LastName";
             tb_LastName.Size = new Size(192, 27);
             tb_LastName.TabIndex = 1;
-            tb_LastName.TextChanged += GetClient;
             // 
             // label4
             // 
@@ -475,6 +474,7 @@
             // cb_Dcv
             // 
             cb_Dcv.AutoSize = true;
+            cb_Dcv.Enabled = false;
             cb_Dcv.Location = new Point(366, 254);
             cb_Dcv.Name = "cb_Dcv";
             cb_Dcv.Size = new Size(18, 17);
@@ -493,6 +493,7 @@
             // cb_Oscpv
             // 
             cb_Oscpv.AutoSize = true;
+            cb_Oscpv.Enabled = false;
             cb_Oscpv.Location = new Point(366, 221);
             cb_Oscpv.Name = "cb_Oscpv";
             cb_Oscpv.Size = new Size(18, 17);
@@ -503,6 +504,7 @@
             // cb_Casco
             // 
             cb_Casco.AutoSize = true;
+            cb_Casco.Enabled = false;
             cb_Casco.Location = new Point(366, 190);
             cb_Casco.Name = "cb_Casco";
             cb_Casco.Size = new Size(18, 17);
@@ -705,6 +707,7 @@
             // cb_PropChoice
             // 
             cb_PropChoice.AutoSize = true;
+            cb_PropChoice.Enabled = false;
             cb_PropChoice.Location = new Point(362, 241);
             cb_PropChoice.Name = "cb_PropChoice";
             cb_PropChoice.Size = new Size(18, 17);
@@ -863,6 +866,7 @@
             // cb_TravelChoice
             // 
             cb_TravelChoice.AutoSize = true;
+            cb_TravelChoice.Enabled = false;
             cb_TravelChoice.Location = new Point(372, 217);
             cb_TravelChoice.Name = "cb_TravelChoice";
             cb_TravelChoice.Size = new Size(18, 17);
