@@ -62,6 +62,7 @@
             bt_Oscpv1 = new Button();
             bt_Casko1 = new Button();
             cb_Dcv = new CheckBox();
+            tb_MarketValue = new TextBox();
             cb_Oscpv = new CheckBox();
             cb_Casco = new CheckBox();
             label16 = new Label();
@@ -118,7 +119,6 @@
             label13 = new Label();
             label12 = new Label();
             tb_Country = new TextBox();
-            tb_MarketValue = new TextBox();
             gb_TotalSum = new GroupBox();
             label26 = new Label();
             tb_TotalSum = new TextBox();
@@ -481,6 +481,14 @@
             cb_Dcv.TabIndex = 25;
             cb_Dcv.UseVisualStyleBackColor = true;
             cb_Dcv.CheckedChanged += Dcv_CheckedChanged;
+            // 
+            // tb_MarketValue
+            // 
+            tb_MarketValue.Location = new Point(139, 105);
+            tb_MarketValue.Name = "tb_MarketValue";
+            tb_MarketValue.Size = new Size(250, 27);
+            tb_MarketValue.TabIndex = 16;
+            tb_MarketValue.TextChanged += tb_MarketValue_TextChanged;
             // 
             // cb_Oscpv
             // 
@@ -1001,14 +1009,6 @@
             tb_Country.Size = new Size(376, 27);
             tb_Country.TabIndex = 34;
             // 
-            // tb_MarketValue
-            // 
-            tb_MarketValue.Location = new Point(139, 105);
-            tb_MarketValue.Name = "tb_MarketValue";
-            tb_MarketValue.Size = new Size(250, 27);
-            tb_MarketValue.TabIndex = 16;
-            tb_MarketValue.TextChanged += tb_MarketValue_TextChanged;
-            // 
             // gb_TotalSum
             // 
             gb_TotalSum.Controls.Add(label26);
@@ -1055,6 +1055,7 @@
             bt_AddToBasket.TabIndex = 45;
             bt_AddToBasket.Text = "Додати до кошику";
             bt_AddToBasket.UseVisualStyleBackColor = true;
+            bt_AddToBasket.Click += AddToBasketClick;
             // 
             // toolTip1
             // 

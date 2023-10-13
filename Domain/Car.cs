@@ -31,7 +31,7 @@ namespace WinFormsApp3.Domain
         }
         public override string ToString()
         {
-            return $"Авто {CarBrand} {CarModel} {CarYear} року випуску";
+            return $"Авто {CarBrand} {CarModel} {CarYear} року випуску ";
         }
     }
 }

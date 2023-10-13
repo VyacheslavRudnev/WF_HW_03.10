@@ -85,7 +85,7 @@ namespace WinFormsApp3.Domain
             }
             return basePropertyRate;
         }
-        public decimal TravelIns(int days, int travelers, decimal cover, int button)
+        public decimal TravelIns(int days, int travelers, int cover, int button)
         {
            
             if ( button == 1)

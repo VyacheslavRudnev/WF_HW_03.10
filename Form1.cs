@@ -16,7 +16,6 @@ namespace WinFormsApp3
             insurers = new Insurers();
 
         }
-
         private void FormResize(object sender, EventArgs e)
         {
             if (this.Width > 1000 && this.Height > 600)
@@ -51,8 +50,6 @@ namespace WinFormsApp3
                 tc_Tab.TabPages[0].Hide();
             }
         }
-
-
         private void lb_SizeChanged()
         {
             if (lb_Clients.Items.Count == 0)
@@ -64,7 +61,6 @@ namespace WinFormsApp3
                 gb_ResultBox.Visible = true;
             }
         }
-
         private void CheckedChengedProperty(object sender, EventArgs e)
         {
             if (cb_isProperty.Checked)
@@ -80,7 +76,6 @@ namespace WinFormsApp3
                 tc_Tab.TabPages[1].Hide();
             }
         }
-
         private void CheckedChangedTravel(object sender, EventArgs e)
         {
             if (cb_isTravel.Checked)
@@ -97,7 +92,6 @@ namespace WinFormsApp3
                 tc_Tab.TabPages[2].Hide();
             }
         }
-
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb_isAuto.Checked && cb_isProperty.Checked && cb_isTravel.Checked)
@@ -139,21 +133,39 @@ namespace WinFormsApp3
                 tc_Tab.Visible = false;
             }
         }
+        private void AddToBasketClick(object sender, EventArgs e)
+        {
+            
+           
+            //var item = new Client(tb_FirstName.Text, tb_LastName.Text, tb_MiddleName.Text, mtb_PhoneNumber.Text, tb_Age.Text, tb_City.Text,                
+            //                   new Car(tb_CarBrand.Text, tb_CarModel.Text, Convert.ToInt32(tb_CarYear.Text), Convert.ToDecimal(tb_MarketValue.Text), Convert.ToDouble(tb_EngineVal.Text)),
+            //                                  new Property(tb_Tipe.Text, Convert.ToDecimal(tb_MarketValueProp.Text), Convert.ToDouble(tb_Square.Text)),
+            //                                                 new Journeys(tb_Country.Text, Convert.ToInt32(tb_InsCover.Text), Convert.ToInt32(tb_Period.Text), Convert.ToInt32(tb_Travelers.Text)),
+            //                          Convert.ToDecimal(tb_PriceCasco.Text) , Convert.ToDecimal(tb_PriceOscpv.Text), Convert.ToDecimal(tb_PriceDcv.Text), Convert.ToDecimal(tb_PriceProp.Text), Convert.ToDecimal(tb_TravelPrice.Text), Convert.ToDecimal(tb_TotalSum.Text), Convert.ToDecimal(tb_resultPrice.Text)).ToString();
+            var item = new Client(tb_FirstName.Text, tb_LastName.Text, tb_MiddleName.Text, mtb_PhoneNumber.Text, tb_Age.Text, tb_City.Text,
+                               new Car(tb_CarBrand.Text, tb_CarModel.Text, Convert.ToInt32(tb_CarYear.Text), Convert.ToDecimal(tb_MarketValue.Text), Convert.ToDouble(tb_EngineVal.Text)),
+                                              new Property(tb_Tipe.Text, Convert.ToDecimal(tb_MarketValueProp.Text), Convert.ToDouble(tb_Square.Text)),
+                                                             new Journeys(tb_Country.Text, Convert.ToInt32(tb_InsCover.Text), Convert.ToInt32(tb_Period.Text), Convert.ToInt32(tb_Travelers.Text)),
+                                      Convert.ToDecimal(tb_PriceCasco.Text), Convert.ToDecimal(tb_PriceOscpv.Text), Convert.ToDecimal(tb_PriceDcv.Text), Convert.ToDecimal(tb_PriceProp.Text), Convert.ToDecimal(tb_TravelPrice.Text), Convert.ToDecimal(tb_TotalSum.Text), Convert.ToDecimal(tb_resultPrice.Text));
 
-        //private void AddToBasketClick(object sender, EventArgs e)
-        //{
-        //    var item = new Client(tb_FirstName.Text, tb_LastName.Text, tb_MiddleName.Text, mtb_PhoneNumber.Text, Convert.ToInt32(tb_Age.Text), tb_City.Text, new Car(), new Property(), new Journeys()));
-        //    insurers.Collection.Add(item);
-        //    lb_Clients.Items.Add(item);
-        //    lb_SizeChanged();
+            insurers.Collection.Add(item);
+            lb_Clients.Items.Add(item);
+            lb_SizeChanged();
+            if (lb_Clients.Items.Count >= 1)
+            {
+                tb_resultPrice.Text = insurers.Collection.Sum(x => x.TotalSum).ToString();
+            }
+            else
+            {
+                tb_resultPrice.Text = "0";
+            }
 
 
 
 
 
 
-
-        //}
+        }
 
         private void GetClient(object sender, EventArgs e)
         {
@@ -173,7 +185,7 @@ namespace WinFormsApp3
                 {
                     bt_Casko1.Enabled = true;
                     Car car = new(tb_CarBrand.Text, tb_CarModel.Text, Convert.ToInt32(tb_CarYear.Text), Convert.ToDecimal(tb_MarketValue.Text), Convert.ToDouble(tb_EngineVal.Text));
-                    Calculator calc = new Calculator();
+                    Calculator calc = new();
                     decimal result = calc.CascoIns(car.CarYear, car.MarketValue);
                     tb_PriceCasco.Text = result.ToString();
                     tb_PriceCasco.Visible = true;
@@ -184,7 +196,6 @@ namespace WinFormsApp3
                 MessageBox.Show(ex.Message, "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
         private void OscpvClick(object sender, EventArgs e)
         {
             try
@@ -196,7 +207,7 @@ namespace WinFormsApp3
                 else
                 {
                     Car car = new(tb_CarBrand.Text, tb_CarModel.Text, Convert.ToInt32(tb_CarYear.Text), Convert.ToDecimal(tb_MarketValue.Text), Convert.ToDouble(tb_EngineVal.Text));
-                    Calculator calc = new Calculator();
+                    Calculator calc = new();
                     decimal result = calc.OscpvIns(car.EngineVal);
                     tb_PriceOscpv.Text = result.ToString();
                     tb_PriceOscpv.Visible = true;
@@ -219,7 +230,7 @@ namespace WinFormsApp3
                 {
 
                     Car car = new(tb_CarBrand.Text, tb_CarModel.Text, Convert.ToInt32(tb_CarYear.Text), Convert.ToDecimal(tb_MarketValue.Text), Convert.ToDouble(tb_EngineVal.Text));
-                    Calculator calc = new Calculator();
+                    Calculator calc = new();
                     decimal result = calc.DcvIns();
                     tb_PriceDcv.Text = result.ToString();
                     tb_PriceDcv.Visible = true;
@@ -321,7 +332,7 @@ namespace WinFormsApp3
                     tb_TotalSum.Text = (Convert.ToDecimal(tb_PriceOscpv.Text) + Convert.ToDecimal(tb_TravelPrice.Text)).ToString();
                 }
                 else
-                {                    
+                {
                     tb_TotalSum.Text = "0";
                 }
             }
@@ -485,7 +496,7 @@ namespace WinFormsApp3
                 }
             }
             else if (cb_isTravel.Checked)
-            { 
+            {
                 if (cb_TravelChoice.Checked)
                 {
                     tb_TotalSum.Text = (Convert.ToDecimal(tb_TravelPrice.Text)).ToString();
@@ -611,7 +622,7 @@ namespace WinFormsApp3
             }
             else
             {
-                Journeys journeys = new(tb_Country.Text, Convert.ToDecimal(tb_InsCover.Text), Convert.ToInt32(tb_Period.Text), Convert.ToInt32(tb_Travelers.Text));
+                Journeys journeys = new(tb_Country.Text, Convert.ToInt32(tb_InsCover.Text), Convert.ToInt32(tb_Period.Text), Convert.ToInt32(tb_Travelers.Text));
                 Calculator calc = new();
                 decimal result = calc.TravelIns(journeys.JourneyDays, journeys.JourneyPeople, journeys.JourneyInsCover, 1);
                 tb_TravelPrice.Text = result.ToString();
@@ -628,7 +639,7 @@ namespace WinFormsApp3
             }
             else
             {
-                Journeys journeys = new(tb_Country.Text, Convert.ToDecimal(tb_InsCover.Text), Convert.ToInt32(tb_Period.Text), Convert.ToInt32(tb_Travelers.Text));
+                Journeys journeys = new(tb_Country.Text, Convert.ToInt32(tb_InsCover.Text), Convert.ToInt32(tb_Period.Text), Convert.ToInt32(tb_Travelers.Text));
                 Calculator calc = new();
                 decimal result = calc.TravelIns(journeys.JourneyDays, journeys.JourneyPeople, journeys.JourneyInsCover, 2);
                 tb_TravelPrice.Text = result.ToString();
@@ -644,7 +655,7 @@ namespace WinFormsApp3
             }
             else
             {
-                Journeys journeys = new(tb_Country.Text, Convert.ToDecimal(tb_InsCover.Text), Convert.ToInt32(tb_Period.Text), Convert.ToInt32(tb_Travelers.Text));
+                Journeys journeys = new(tb_Country.Text, Convert.ToInt32(tb_InsCover.Text), Convert.ToInt32(tb_Period.Text), Convert.ToInt32(tb_Travelers.Text));
                 Calculator calc = new();
                 decimal result = calc.TravelIns(journeys.JourneyDays, journeys.JourneyPeople, journeys.JourneyInsCover, 3);
                 tb_TravelPrice.Text = result.ToString();
@@ -664,19 +675,7 @@ namespace WinFormsApp3
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
         //private void AddNewClient(object sender, EventArgs e)
         //{
         //    try

@@ -9,11 +9,11 @@ namespace WinFormsApp3.Domain
     public class Journeys
     {
         public string JourneyCountry { get; set; }
-        public decimal JourneyInsCover { get; set; }
+        public int JourneyInsCover { get; set; }
         public int JourneyDays { get; set; }
         public int JourneyPeople { get; set; }
        
-        public Journeys(string journeyCountry, decimal journeyInsCover, int journeyDays, int journeyPeople)
+        public Journeys(string journeyCountry, int journeyInsCover, int journeyDays, int journeyPeople)
         {
             JourneyCountry = journeyCountry;
             JourneyInsCover = journeyInsCover;
